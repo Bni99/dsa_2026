@@ -1,0 +1,20 @@
+//Pattern2
+//we are going to make
+// *
+// * *
+// * * *
+// * * * *
+// * * * * *
+
+const pattern = () => {
+  let str = "";
+  for (let i = 0; i < 5; i++) {
+    for (let j = 0; j <= i; j++) {
+      str = str + " * ";
+    }
+    str = str + "\n";
+  }
+  return str;
+};
+
+console.log(pattern());
