@@ -53,7 +53,7 @@ class LinkedList {
       this.deleteAtHead();
       return;
     }
-    if (index === this.size) {
+    if (index === this.size - 1) {
       this.deleteAtTail();
       return;
     }
