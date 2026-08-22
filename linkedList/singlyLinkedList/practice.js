@@ -132,6 +132,58 @@ class LinkedList {
     return curr;
   }
 
+  reverseList() {
+    let prev = null;
+    let curr = this.head;
+    let temp;
+
+    while (curr) {
+      temp = curr.next;
+      curr.next = prev;
+      prev = curr;
+      curr = temp;
+    }
+
+    this.head = prev;
+  }
+
+  lengthOfLoop() {
+    let map = new Map();
+    let curr = this.head;
+    let temp = 0;
+
+    while (curr) {
+      if (map.has(curr)) {
+        return temp - map.get(curr);
+      } else {
+        map.set(curr, temp);
+        temp++;
+      }
+      curr = curr.next;
+    }
+    return 0;
+  }
+
+  lengthOfLoopOptimized() {
+    let slow = this.head;
+    let fast = this.head;
+    let ctr = 1;
+
+    while (fast && fast.next) {
+      slow = slow.next;
+      fast = fast.next.next;
+      if (fast === slow) {
+        fast = fast.next;
+        while (fast !== slow) {
+          fast = fast.next;
+          ctr++;
+        }
+        return ctr;
+      }
+    }
+    return 0;
+  }
+
   print() {
     let curr = this.head;
     let str = "";
@@ -151,5 +203,5 @@ newList.addAtHead(4);
 newList.addAtHead(3);
 newList.addAtHead(2);
 newList.addAtHead(1);
-console.log(newList.middleOfLinkedList());
+newList.reverseList();
 newList.print();
